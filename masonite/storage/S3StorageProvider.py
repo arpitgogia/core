@@ -62,4 +62,7 @@ class S3StorageProvider(StorageContract):
         obj = s3.Object(bucket, key)
         return obj.content_lenth / 1024 
 
-
+    def all(self, location):
+        key, bucket = path_splitter(location)
+        respone = client.list_objects_v2(Bucket=bucket)
+        return response['Contents']
